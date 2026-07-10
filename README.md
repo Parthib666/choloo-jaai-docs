@@ -2,38 +2,79 @@
 
 ## Overview
 
-Choloo Jaai is an event management platform supporting:
+**Choloo Jaai** is a full-stack event management platform designed for both **B2B** and **B2C** use cases.
+
+The platform supports:
 
 - Concerts
 - Music gigs
 - Corporate events
-- Seminars
 - Conferences
+- Seminars
 - Symposiums
 
-## Repositories
+---
 
-Frontend:
-- choloo-jaai-frontend
+## Project Architecture
 
-Backend:
-- choloo-jaai-backend
+The project is organized into three separate repositories:
 
-Documentation:
-- choloo-jaai-docs
+| Repository | Purpose |
+|------------|---------|
+| `choloo-jaai-frontend` | Next.js frontend |
+| `choloo-jaai-backend` | NestJS REST API |
+| `choloo-jaai-docs` | Project documentation |
+
+---
+
+## Documentation Structure
+
+```
+01-project-overview/
+02-business/
+03-system-design/
+04-database/
+05-api/
+06-development/
+07-testing/
+08-deployment/
+```
+
+---
 
 ## Technology Stack
 
-Frontend:
+### Frontend
+
 - Next.js
 - TypeScript
 - Tailwind CSS
 
-Backend:
+### Backend
+
 - NestJS
+- TypeORM
 - PostgreSQL
 - Redis
 
-## Development Status
+### DevOps
 
-Project initialization phase.
+- Docker
+- Docker Compose
+- Git
+- GitHub
+
+---
+
+## Current Status
+
+Current phase:
+
+- Backend Foundation ✅
+- Users Module 🚧
+
+---
+
+## License
+
+This project is developed for learning purposes and portfolio development.

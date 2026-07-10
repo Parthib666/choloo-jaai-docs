@@ -1,60 +1,95 @@
-# ADR-001: Separate Frontend and Backend Repositories
+# Architecture Decision Records (ADR)
 
-## Decision
-
-Frontend and backend will be maintained in separate repositories.
-
-## Reason
-
-- Independent deployment
-- Independent versioning
-- Cleaner CI/CD pipeline
-
+This document records significant architectural decisions made during the development of the Choloo Jaai platform.
 
 ---
 
+## ADR-001: Repository Strategy
 
-# ADR-002: Use NestJS for Backend
+**Status:** Accepted
 
-## Decision
+### Decision
 
-NestJS selected as backend framework.
+Maintain three separate Git repositories:
 
-## Reason
+- `choloo-jaai-frontend`
+- `choloo-jaai-backend`
+- `choloo-jaai-docs`
+
+### Rationale
+
+- Independent version control
+- Independent deployment pipelines
+- Clear separation of responsibilities
+- Easier collaboration and maintenance
+
+---
+
+## ADR-002: Backend Framework
+
+**Status:** Accepted
+
+### Decision
+
+Use **NestJS** as the backend framework.
+
+### Rationale
 
 - Modular architecture
-- TypeScript support
-- Dependency injection
-- Enterprise-ready structure
-
-
----
-
-
-# ADR-003: Use PostgreSQL with TypeORM
-
-## Decision
-
-PostgreSQL selected as primary database with TypeORM.
-
-## Reason
-
-- Relational data model fits event management
-- Strong consistency
-- Type-safe entity management
-
+- Built-in dependency injection
+- TypeScript-first development
+- Scalable project structure
+- Strong community support
 
 ---
 
+## ADR-003: Database
 
-# ADR-004: Use Docker for Development Services
+**Status:** Accepted
 
-## Decision
+### Decision
 
-Database and Redis run through Docker containers.
+Use **PostgreSQL** with **TypeORM**.
 
-## Reason
+### Rationale
 
-- Consistent development environment
-- Easy setup
-- Environment isolation
+- Strong relational data modeling
+- ACID compliance for financial and booking operations
+- Excellent TypeScript support
+- Mature migration system
+
+---
+
+## ADR-004: Caching Layer
+
+**Status:** Accepted
+
+### Decision
+
+Use **Redis**.
+
+### Rationale
+
+Redis will be used for:
+
+- Application caching
+- Session storage
+- Rate limiting
+- Queue support (future)
+
+---
+
+## ADR-005: Development Environment
+
+**Status:** Accepted
+
+### Decision
+
+Use Docker for local development.
+
+### Rationale
+
+- Consistent environments
+- Simple onboarding
+- Easy database setup
+- Platform-independent development

@@ -1,25 +1,26 @@
-# Users API Documentation
+# Users API
 
+## Base URL
 
-Base URL:
-
-
+```
 http://localhost:3000
+```
 
+---
 
+## GET /users
 
-# Get All Users
+Returns all users.
 
-## Endpoint
+### Response
 
+**Status**
 
-GET /users
+```
+200 OK
+```
 
-
-
-## Response
-
-Example:
+**Example**
 
 ```json
 [
@@ -30,10 +31,59 @@ Example:
     "email": "parthib@test.com"
   }
 ]
-Create User
-Endpoint
-POST /users
-Request Body
+```
+
+---
+
+## GET /users/:id
+
+Returns a single user.
+
+### Success
+
+**Status**
+
+```
+200 OK
+```
+
+**Example**
+
+```json
+{
+  "id": "be9d1ad9-760d-4e8b-ab86-f87b17f2ad49",
+  "firstName": "Parthib",
+  "lastName": "Datta",
+  "email": "parthib@test.com",
+  "phone": "01888888888",
+  "role": "CUSTOMER",
+  "status": "ACTIVE"
+}
+```
+
+### Not Found
+
+```
+404 Not Found
+```
+
+```json
+{
+  "message": "User not found",
+  "error": "Not Found",
+  "statusCode": 404
+}
+```
+
+---
+
+## POST /users
+
+Creates a new user.
+
+### Request
+
+```json
 {
   "firstName": "Parthib",
   "lastName": "Datta",
@@ -41,144 +91,60 @@ Request Body
   "phone": "01700000000",
   "passwordHash": "temporary_hash"
 }
-Success Response
+```
 
-HTTP:
+### Success
 
+```
 201 Created
+```
 
-Example:
+### Duplicate Email
 
-{
- "id":"uuid",
- "firstName":"Parthib",
- "role":"CUSTOMER",
- "status":"ACTIVE"
-}
-Validation
-
-The API uses:
-
-class-validator
-class-transformer
-NestJS ValidationPipe
-
-Rules:
-
-firstName required
-lastName required
-email must be valid
-passwordHash required
-Duplicate Email Response
-
-HTTP:
-
+```
 409 Conflict
+```
 
-Response:
-
+```json
 {
- "message":"Email already exists",
- "error":"Conflict",
- "statusCode":409
+  "message": "Email already exists",
+  "error": "Conflict",
+  "statusCode": 409
 }
+```
 
 ---
 
-# 4. `06-development/backend-development-progress.md`
+## PATCH /users/:id
 
-Create:
+Updates an existing user.
 
-```text
-06-development/backend-development-progress.md
+### Request
 
-Content:
+```json
+{
+  "phone": "01888888888"
+}
+```
 
-# Backend Development Progress
+### Success
 
+```
+200 OK
+```
 
-## Completed Milestones
+Returns the updated user.
 
+### Not Found
 
-## Environment Setup
+```
+404 Not Found
+```
 
-Completed:
-
-- Node.js installed
-- npm configured
-- Git configured
-- Docker installed
-- Docker Compose installed
-
-
-## Infrastructure
-
-Completed:
-
-- PostgreSQL 16 container
-- Redis 7 container
-- Docker Compose configuration
-
-
-## NestJS Setup
-
-Completed:
-
-- NestJS project initialized
-- Modular folder structure created
-- TypeScript configured
-
-
-## Database Integration
-
-Completed:
-
-- TypeORM installed
-- PostgreSQL driver installed
-- Database module created
-- Environment configuration added
-
-
-## Users Module
-
-Completed:
-
-Features:
-
-- User entity
-- User table creation
-- DTO validation
-- Repository injection
-- CRUD foundation
-
-
-## Implemented APIs
-
-
-| Method | Endpoint | Status |
-|-|-|-|
-| GET | /users | Completed |
-| POST | /users | Completed |
-
-
-## Testing
-
-API testing performed using:
-
-- Postman
-
-
-Verified:
-
-- User creation
-- User retrieval
-- Duplicate email handling
-
-
-## Next Steps
-
-- Complete User CRUD
-- Add password hashing
-- Implement Authentication
-- Implement JWT
-- Implement Role Based Access Control
+```json
+{
+  "message": "User not found",
+  "error": "Not Found",
+  "statusCode": 404
+}
+```
